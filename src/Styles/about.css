@@ -1,0 +1,7 @@
+@media (max-width: 950px) {
+    img{
+        margin-top: 0;
+        height: 250px !important;
+        width: 550px;
+    }
+}

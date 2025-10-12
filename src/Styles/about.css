@@ -1,7 +1,53 @@
+.about-section {
+  background: linear-gradient(to right, #4cf500, #6aaf1e);
+  min-height: 60vh;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.about-section h2 {
+  color: #e0f2f1;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.about-section p {
+  color: #dcedc8;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.farm-img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+}
+
+.farm-img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive image styles */
 @media (max-width: 950px) {
-    img{
-        margin-top: 0;
-        height: 250px !important;
-        width: 550px;
-    }
+  .farm-img {
+    margin-top: 0;
+    height: 250px !important;
+    width: 550px;
+    object-fit: cover;
+  }
+}
+
+/* Adjust layout for smaller screens */
+@media (max-width: 768px) {
+  .about-section .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-section .col-lg-6,
+  .about-section .col-lg-5 {
+    max-width: 100%;
+  }
 }

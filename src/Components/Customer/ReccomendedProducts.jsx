@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/RecommendedProducts.css";
+
 
 const RecommendedProducts = () => {
   const products = [

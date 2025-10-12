@@ -1,32 +1,67 @@
-.featured-products-section{
-    background: linear-gradient(to right, #a7cdbe89, #5fc363) !important;
-    padding: 20px!important;
-    display: flex !important;
+/* Section title */
+.featured-products-section h2 {
+  font-weight: 700;
+  color: #006064; /* Dark teal */
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
-.card-img-top{
-    max-width: 100% !important;
-    height: auto !important;
-}
-.card{
-    width: 100% !important;
-    height: 50% !important;
-}
-@media (max-width: 768px) {
-    .card{
-        width: 40% !important;
-        margin: 10px auto !important;
-    }
 
-    .featured-products-section{
-        padding: 10px !important;
-    }
+/* Bootstrap card overrides */
+.featured-products-section .card {
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  background: #ffffffcc; /* Slight transparency */
 }
-@media (max-width: 480px ){
-    .card{
-        width: 60% !important;
-    }
 
-    .featured-products-section{
-        padding: 5px !important;
-    }
+/* Card hover effect */
+.featured-products-section .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Card image */
+.featured-products-section .card-img-top {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  object-fit: cover;
+}
+
+/* Card body */
+.featured-products-section .card-body {
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+
+/* Card title */
+.featured-products-section .card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #004d40; /* Darker teal */
+  margin-bottom: 0.5rem;
+}
+
+/* Card text */
+.featured-products-section .card-text {
+  font-size: 1.1rem;
+  color: #00796b;
+  margin-bottom: 1rem;
+}
+
+/* Carousel controls color override for better contrast */
+.featured-products-section .carousel-control-prev-icon,
+.featured-products-section .carousel-control-next-icon {
+  filter: invert(35%) sepia(70%) saturate(350%) hue-rotate(120deg);
+}
+
+/* Responsive tweaks */
+@media (max-width: 767.98px) {
+  .featured-products-section .card-title {
+    font-size: 1.1rem;
+  }
+  .featured-products-section .card-text {
+    font-size: 1rem;
+  }
 }

@@ -1,0 +1,71 @@
+/* Container */
+.recommended-products {
+  margin: 3rem auto;
+  padding: 2rem;
+  max-width: 1200px;
+  background-color: #f5f9f8;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Section Header */
+.recommended-products .header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.recommended-products .header h2 {
+  font-size: 1.8rem;
+  color: #2a7a2a;
+  margin: 0;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Product Card */
+.product-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Product Info */
+.product-info h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.product-info p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/* Button */
+.add-btn {
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #2e7d32;
+}

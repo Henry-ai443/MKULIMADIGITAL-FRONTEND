@@ -1,10 +1,13 @@
-/* Base styles for navbar */
-.navbar {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+/* Glassy navbar */
+.navbar-glass {
   position: sticky;
   top: 0;
-  z-index: 1030;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  z-index: 1100;
+  backdrop-filter: saturate(180%) blur(15px);
+  background: rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Container */
@@ -13,72 +16,134 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-  padding: 0.7rem 1.5rem;
   justify-content: space-between;
+  padding: 0.75rem 1.5rem;
 }
 
 /* Brand */
-.fst-italic {
-  font-style: italic !important;
+.brand {
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #2a7a2a;
+  text-decoration: none;
+  letter-spacing: 1.2px;
 }
 
-.text-white {
-  color: white !important;
-}
-
-.fs-2 {
-  font-size: 1.75rem !important;
-}
-
-/* Navbar collapse default styles */
-.navbar-collapse {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-/* Nav links container */
-.navbar-nav {
+/* Desktop menu */
+.desktop-menu {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   margin: 0;
   padding: 0;
-  align-items: center;
 }
 
-/* Nav item */
-.nav-item {
-  font-size: 0.875rem; /* fs-7 approx */
-}
-
-/* Nav link */
-.nav-link {
-  color: white;
+.desktop-menu li a {
+  color: #2a7a2a;
+  font-weight: 600;
   text-decoration: none;
-  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+  font-size: 1rem;
+}
+
+.desktop-menu li a:hover,
+.desktop-menu li a:focus {
+  color: #388e3c;
+}
+
+/* Hide desktop menu on smaller screens */
+@media (max-width: 991.98px) {
+  .desktop-menu {
+    display: none;
+  }
+}
+
+/* Hamburger menu button */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 28px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1200;
+}
+
+.menu-toggle span {
+  width: 28px;
+  height: 3px;
+  background: #2a7a2a;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 8px;
+  position: absolute;
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 8px;
+  position: absolute;
+}
+
+/* Show hamburger on small screens */
+@media (max-width: 991.98px) {
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+/* Mobile sliding menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -250px; /* hidden offscreen */
+  width: 250px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.15);
+  padding: 4rem 1.5rem 1.5rem;
+  transition: left 0.3s ease;
+  z-index: 1150;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu.show {
+  left: 0;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-menu ul li a {
+  color: #2a7a2a;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.nav-link:hover,
-.nav-link:focus {
-  color: #a5d6a7; /* lighter green */
-}
-
-/* Responsive behavior */
-@media (max-width: 991.98px) {
-  .navbar-collapse {
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-
-  .navbar-nav {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .nav-link {
-    padding: 0.5rem 1rem;
-    width: 100%;
-  }
+.mobile-menu ul li a:hover,
+.mobile-menu ul li a:focus {
+  color: #388e3c;
 }

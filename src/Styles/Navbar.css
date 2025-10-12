@@ -1,19 +1,84 @@
-@media (max-width: 991.98px) {
-    .navbar-collapse{
-        display: flex ;
-        flex-direction: column;
-        justify-content: end ;
-    }
-        .navbar-nav{
-            flex-direction: row;
-        }
-        .nav-link{
-            padding-right: 1rem;
-        }
-    }
+/* Base styles for navbar */
+.navbar {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
 
-    .navbar-collapse{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  justify-content: space-between;
+}
+
+/* Brand */
+.fst-italic {
+  font-style: italic !important;
+}
+
+.text-white {
+  color: white !important;
+}
+
+.fs-2 {
+  font-size: 1.75rem !important;
+}
+
+/* Navbar collapse default styles */
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Nav links container */
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+/* Nav item */
+.nav-item {
+  font-size: 0.875rem; /* fs-7 approx */
+}
+
+/* Nav link */
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #a5d6a7; /* lighter green */
+}
+
+/* Responsive behavior */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-link {
+    padding: 0.5rem 1rem;
+    width: 100%;
+  }
+}

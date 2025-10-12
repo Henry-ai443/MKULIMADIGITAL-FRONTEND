@@ -1,4 +1,4 @@
-/* Glassy navbar */
+/* === Glassy Navbar === */
 .navbar-glass {
   position: sticky;
   top: 0;
@@ -10,7 +10,7 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Container */
+/* === Container === */
 .container {
   max-width: 1100px;
   margin: 0 auto;
@@ -20,7 +20,7 @@
   padding: 0.75rem 1.5rem;
 }
 
-/* Brand */
+/* === Brand === */
 .brand {
   font-style: italic;
   font-weight: 700;
@@ -30,7 +30,7 @@
   letter-spacing: 1.2px;
 }
 
-/* Desktop menu */
+/* === Desktop Menu === */
 .desktop-menu {
   list-style: none;
   display: flex;
@@ -45,6 +45,7 @@
   text-decoration: none;
   transition: color 0.3s ease;
   font-size: 1rem;
+  position: relative;
 }
 
 .desktop-menu li a:hover,
@@ -52,14 +53,29 @@
   color: #388e3c;
 }
 
-/* Hide desktop menu on smaller screens */
+.desktop-menu li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.desktop-menu li a:hover::after {
+  width: 100%;
+}
+
+/* === Hide Desktop Menu on Smaller Screens === */
 @media (max-width: 991.98px) {
   .desktop-menu {
     display: none;
   }
 }
 
-/* Hamburger menu button */
+/* === Hamburger Menu Button === */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -98,18 +114,18 @@
   position: absolute;
 }
 
-/* Show hamburger on small screens */
+/* === Show Hamburger on Small Screens === */
 @media (max-width: 991.98px) {
   .menu-toggle {
     display: flex;
   }
 }
 
-/* Mobile sliding menu */
+/* === Mobile Sliding Menu === */
 .mobile-menu {
   position: fixed;
   top: 0;
-  left: -250px; /* hidden offscreen */
+  left: -250px;
   width: 250px;
   height: 100vh;
   background: rgba(255, 255, 255, 0.3);
@@ -141,9 +157,66 @@
   font-weight: 600;
   text-decoration: none;
   transition: color 0.3s ease;
+  position: relative;
 }
 
 .mobile-menu ul li a:hover,
 .mobile-menu ul li a:focus {
   color: #388e3c;
+}
+
+.mobile-menu ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.mobile-menu ul li a:hover::after {
+  width: 100%;
+}
+
+/* === Dark Mode Styles === */
+body.dark .navbar-glass {
+  background: rgba(20, 20, 20, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark .brand,
+body.dark .desktop-menu li a,
+body.dark .mobile-menu ul li a {
+  color: #ffffff;
+}
+
+body.dark .desktop-menu li a:hover,
+body.dark .mobile-menu ul li a:hover {
+  color: #90ee90;
+}
+
+body.dark .menu-toggle span {
+  background: #ffffff;
+}
+
+body.dark .mobile-menu {
+  background: rgba(30, 30, 30, 0.9);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+/* === Dark Mode Toggle Button === */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #2a7a2a;
+  margin-left: 1rem;
+  transition: color 0.3s ease;
+}
+
+body.dark .dark-mode-toggle {
+  color: #ffffff;
 }

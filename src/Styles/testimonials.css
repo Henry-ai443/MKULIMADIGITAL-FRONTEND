@@ -1,0 +1,56 @@
+/* Container: vertical stack and center */
+#testimonials .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Heading full width and centered */
+#testimonials h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #2a7a2a; /* matching your brand green */
+}
+
+/* Testimonial card */
+#testimonials .carousel-item .bg-white {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Testimonial text styling */
+#testimonials p.fs-5.fst-italic {
+  font-style: italic;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+/* Star rating container */
+#testimonials div[aria-hidden="true"] {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+/* Testimonial author name */
+#testimonials h5.fw-bold {
+  color: #2a7a2a;
+  margin-bottom: 0.25rem;
+}
+
+/* Testimonial role */
+#testimonials small.text-muted {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Carousel controls styling (optional) */
+#testimonials .carousel-control-prev-icon,
+#testimonials .carousel-control-next-icon {
+  filter: invert(30%) sepia(90%) saturate(500%) hue-rotate(90deg);
+}

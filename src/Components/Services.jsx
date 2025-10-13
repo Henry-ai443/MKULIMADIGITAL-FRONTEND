@@ -1,5 +1,6 @@
 import React from 'react';
-import '../Styles/services.css'
+import '../Styles/services.css';
+
 const ServicesSection = () => {
   const services = [
     {
@@ -7,20 +8,24 @@ const ServicesSection = () => {
       text: "Connects farmers directly with clients to negotiate delivery and pickup."
     },
     {
-      title:"Smart Marketplace",
-      text:"List and browse fresh produce with real-time availability."
+      title: "Smart Marketplace",
+      text: "List and browse fresh produce with real-time availability."
     },
     {
       title: "AI Insights",
-      text:"Helps farmers understand market trends and crop strategies."
+      text: "Helps farmers understand market trends and crop strategies."
     },
     {
       title: "Product Analytics",
-      text:"Track views, favorites and sales to improve product choices."
+      text: "Track views, favorites and sales to improve product choices."
     },
     {
-      title:"Secure Communication",
-      text:"Chat safely with clients and farmers to finalize transactions."
+      title: "Secure Communication",
+      text: "Chat safely with clients and farmers to finalize transactions."
+    },
+    {
+      title: "Logistics Support",
+      text: "Assists in coordinating deliveries and pickups efficiently."
     }
   ];
 
@@ -66,6 +71,6 @@ const ServicesSection = () => {
       </div>
     </section>
   );
-}
+};
 
 export default ServicesSection;

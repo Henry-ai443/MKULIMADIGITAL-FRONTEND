@@ -27,6 +27,7 @@
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   gap: 1rem;
+  scroll-padding-left: 1rem;
 }
 
 /* Card styles */
@@ -36,6 +37,9 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: default;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 #services .card:hover {
@@ -48,15 +52,27 @@
   width: 100%;
   margin-top: 2rem;
   gap: 1.5rem;
+  /* Ensure consistent height cards */
+  align-items: stretch;
+}
+
+/* Card body to fill the card vertically */
+#services .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
 }
 
 #services .card-body h5 {
   color: #2a7a2a;
   font-weight: 700;
+  margin-bottom: 0.75rem;
 }
 
 #services .card-body p {
   color: #444;
   font-size: 1rem;
   line-height: 1.4;
+  flex-grow: 1; /* Make paragraph take up remaining space */
 }

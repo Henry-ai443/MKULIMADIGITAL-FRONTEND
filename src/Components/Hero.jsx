@@ -1,28 +1,19 @@
 import React from "react";
+import "../Styles/Hero.css";
 
 const Hero = () => {
   return (
-    <section
-      className="d-flex align-items-center justify-content-center text-white text-center py-5"
-      style={{ backgroundColor: "#F1F8E9" }}
-    >
-      <div className="container">
-        <div className="row align-items-center justify-content-center">
-          {/* Hero Text */}
-          <div className="col-md-8 text-start">
-            <h1 className="display-5 text-success">
-              Connecting Farmers to Markets
-            </h1>
-            <p className="lead text-dark">
-              Mkulima Digital is a one-stop agricultural platform helping
-              farmers list products, access buyers, and grow agribusiness
-              digitally.
-            </p>
-            <a href="#" className="btn btn-success btn-lg mt-3">
-              Explore Marketplace
-            </a>
-          </div>
-        </div>
+    <section className="hero-section">
+      <div className="hero-overlay" />
+      <div className="hero-content">
+        <h1>Connecting Farmers to Markets</h1>
+        <p>
+          Mkulima Digital is a one-stop agricultural platform helping farmers list
+          products, access buyers, and grow agribusiness digitally.
+        </p>
+        <a href="/marketplace" className="hero-button">
+          Explore Marketplace
+        </a>
       </div>
     </section>
   );

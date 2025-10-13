@@ -76,3 +76,12 @@
   line-height: 1.4;
   flex-grow: 1; /* Make paragraph take up remaining space */
 }
+#services .d-flex.d-md-none {
+  width: 100%;
+  padding-left: 1rem;  /* Increase left padding */
+  padding-right: 1rem; /* Match right padding */
+  gap: 1rem;
+  justify-content: center; /* Center the cards */
+  overflow-x: auto; /* Ensure scroll if needed */
+  scroll-padding-left: 1rem; /* For snap scroll (optional) */
+}

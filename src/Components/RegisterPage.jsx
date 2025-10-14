@@ -26,40 +26,40 @@ const RegisterPage = () => {
     try {
       const response = await fetch('https://mkulimadigital-backend.onrender.com/api/register/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
 
-      const isJson = response.headers.get('content-type')?.includes('application/json');
+      const contentType = response.headers.get('content-type');
 
       if (!response.ok) {
-        if (isJson) {
+        if (contentType && contentType.includes('application/json')) {
           const errorData = await response.json();
-          const fieldErrors = Object.entries(errorData)
+          const messages = Object.entries(errorData)
             .map(([field, msgs]) => `${field}: ${Array.isArray(msgs) ? msgs.join(', ') : msgs}`)
             .join('\n');
-          setError(fieldErrors || 'Registration failed. Please try again.');
+          setError(messages || 'Registration failed. Please try again.');
         } else {
-          const text = await response.text();
-          setError(text || 'Registration failed. Please try again.');
+          setError('Server error occurred. Please try again later.');
         }
         setLoading(false);
         return;
       }
 
-      const data = isJson ? await response.json() : {};
-
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-        navigate('/dashboard');
+      if (contentType && contentType.includes('application/json')) {
+        const data = await response.json();
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+          navigate('/dashboard');
+        } else {
+          setError('Unexpected server response.');
+        }
       } else {
-        setError('Registration succeeded, but no token received.');
+        setError('Unexpected server response.');
       }
     } catch (err) {
       console.error('Fetch error:', err);
-      setError('Unable to connect. Please check your network or try again later.');
+      setError('Network error. Please check your connection.');
     } finally {
       setLoading(false);
     }
@@ -69,7 +69,7 @@ const RegisterPage = () => {
     <div className="auth-container">
       <div className="auth-card fade-in">
         <h2 className="auth-title">Create an Account</h2>
-        
+
         {error && (
           <ul style={{ color: 'red', marginBottom: '1rem' }}>
             {error.split('\n').map((errMsg, idx) => (
@@ -77,7 +77,7 @@ const RegisterPage = () => {
             ))}
           </ul>
         )}
-        
+
         <form onSubmit={handleSubmit}>
           <input
             value={form.username}
@@ -121,11 +121,43 @@ const RegisterPage = () => {
             <option value="customer">Customer</option>
             <option value="retailer">Retailer</option>
           </select>
-          <button className="btn-primary full-width" type="submit" disabled={loading}>
-            {loading ? 'Registering...' : 'Register'}
+          <button
+            className="btn-primary full-width"
+            type="submit"
+            disabled={loading}
+            style={{ position: 'relative' }}
+          >
+            {loading ? (
+              <>
+                <span
+                  className="spinner"
+                  style={{
+                    width: '16px',
+                    height: '16px',
+                    border: '3px solid rgba(255,255,255,0.3)',
+                    borderTopColor: 'white',
+                    borderRadius: '50%',
+                    display: 'inline-block',
+                    animation: 'spin 1s linear infinite',
+                    marginRight: '8px',
+                    verticalAlign: 'middle',
+                  }}
+                />
+                Registering...
+              </>
+            ) : (
+              'Register'
+            )}
           </button>
         </form>
       </div>
+
+      {/* Spinner keyframes animation */}
+      <style>{`
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 };

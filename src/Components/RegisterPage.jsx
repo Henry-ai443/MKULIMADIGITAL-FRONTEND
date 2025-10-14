@@ -8,6 +8,7 @@ const RegisterPage = () => {
     username: '',
     email: '',
     password: '',
+    passwordConfirm: '',
     role: 'customer',
   });
 
@@ -16,18 +17,32 @@ const RegisterPage = () => {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    // Clear error on input change
+    setError('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+
+    // Frontend password confirmation validation
+    if (form.password !== form.passwordConfirm) {
+      setError('Passwords do not match.');
+      return;
+    }
+
     setLoading(true);
 
     try {
       const response = await fetch('https://mkulimadigital-backend.onrender.com/api/register/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          username: form.username,
+          email: form.email,
+          password: form.password,
+          role: form.role,
+        }),
       });
 
       const contentType = response.headers.get('content-type');
@@ -71,11 +86,20 @@ const RegisterPage = () => {
         <h2 className="auth-title">Create an Account</h2>
 
         {error && (
-          <ul style={{ color: 'red', marginBottom: '1rem' }}>
-            {error.split('\n').map((errMsg, idx) => (
-              <li key={idx}>{errMsg}</li>
-            ))}
-          </ul>
+          <div
+            style={{
+              backgroundColor: '#ff4d4f',
+              color: 'white',
+              padding: '1rem',
+              borderRadius: '8px',
+              marginBottom: '1rem',
+              whiteSpace: 'pre-wrap',
+              fontWeight: '600',
+            }}
+            role="alert"
+          >
+            {error}
+          </div>
         )}
 
         <form onSubmit={handleSubmit}>
@@ -105,6 +129,16 @@ const RegisterPage = () => {
             name="password"
             className="form-control mb"
             placeholder="Password"
+            onChange={handleChange}
+            required
+            disabled={loading}
+          />
+          <input
+            value={form.passwordConfirm}
+            type="password"
+            name="passwordConfirm"
+            className="form-control mb"
+            placeholder="Confirm Password"
             onChange={handleChange}
             required
             disabled={loading}

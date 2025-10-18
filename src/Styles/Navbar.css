@@ -1,7 +1,86 @@
+/* === Glassy Navbar === */
+.navbar-glass {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1100;
+  backdrop-filter: saturate(180%) blur(15px);
+  background: rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* === Container === */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+}
+
+/* === Brand === */
+.brand {
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #2a7a2a;
+  text-decoration: none;
+  letter-spacing: 1.2px;
+}
+
+/* === Desktop Menu === */
+.desktop-menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.desktop-menu li a {
+  color: #2a7a2a;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1rem;
+  position: relative;
+}
+
+.desktop-menu li a:hover,
+.desktop-menu li a:focus {
+  color: #388e3c;
+}
+
+.desktop-menu li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.desktop-menu li a:hover::after {
+  width: 100%;
+}
+
+/* === Hide Desktop Menu on Smaller Screens === */
+@media (max-width: 991.98px) {
+  .desktop-menu {
+    display: none;
+  }
+}
+
+/* === Hamburger Menu Button === */
 .menu-toggle {
   display: none;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   width: 28px;
   height: 22px;
   background: transparent;
@@ -22,6 +101,7 @@
   transition: all 0.3s ease;
 }
 
+/* Default bar positions */
 .menu-toggle span:nth-child(1) {
   top: 0;
 }
@@ -34,7 +114,7 @@
   top: 18px;
 }
 
-/* Animation to X */
+/* Transform into "X" */
 .menu-toggle.open span:nth-child(1) {
   transform: rotate(45deg);
   top: 9px;
@@ -47,4 +127,70 @@
 .menu-toggle.open span:nth-child(3) {
   transform: rotate(-45deg);
   top: 9px;
+}
+
+/* === Show Hamburger on Small Screens === */
+@media (max-width: 991.98px) {
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+/* === Mobile Sliding Menu === */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.15);
+  padding: 4rem 1.5rem 1.5rem;
+  transition: left 0.3s ease;
+  z-index: 1150;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu.show {
+  left: 0;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-menu ul li a {
+  color: #2a7a2a;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.mobile-menu ul li a:hover,
+.mobile-menu ul li a:focus {
+  color: #388e3c;
+}
+
+.mobile-menu ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.mobile-menu ul li a:hover::after {
+  width: 100%;
 }

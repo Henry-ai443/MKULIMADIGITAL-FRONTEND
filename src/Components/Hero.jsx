@@ -8,7 +8,7 @@ const Hero = () => {
       <div className="hero-content">
         <h1>Connecting Farmers to Markets</h1>
         <p>
-          Mkulima Digital is a one-stop agricultural platform helping farmers list
+          Terra Smart is a one-stop agricultural platform helping farmers list
           products, access buyers, and grow agribusiness digitally.
         </p>
         <a href="/marketplace" className="hero-button">

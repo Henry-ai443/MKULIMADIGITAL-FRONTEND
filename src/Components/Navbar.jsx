@@ -12,7 +12,7 @@ function Navbar() {
     <nav className="navbar-glass sticky-top">
       <div className="container">
         <a href="#" className="brand">
-          Mkulima Digital
+          Terra Smart
         </a>
 
         <button

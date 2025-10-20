@@ -1,15 +1,75 @@
 import React, { useState } from "react";
 import "../Styles/Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   const handleLinkClick = () => setMenuOpen(false);
 
-  //TOKEN and ROLE MIDDLEWARE
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    navigate("/");
+  };
+
   const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+
+  // Function to render the dashboard link based on role
+// Inside Navbar component
+
+const renderDashboardLink = () => {
+  if (role === "farmer") {
+    return (
+      <li>
+        <a href="/farmer-dashboard" onClick={handleLinkClick}>
+          Farmer Dashboard
+        </a>
+      </li>
+    );
+  } else if (role === "retailer") {
+    return (
+      <li>
+        <a href="/retailer-dashboard" onClick={handleLinkClick}>
+          Retailer Dashboard
+        </a>
+      </li>
+    );
+  } else if (role === "customer") {
+    return (
+      <li>
+        <a href="/customer-dashboard" onClick={handleLinkClick}>
+          Customer Dashboard
+        </a>
+      </li>
+    );
+  } else {
+    // Role missing or unrecognized - render all dashboard links
+    return (
+      <>
+        <li>
+          <a href="/farmer-dashboard" onClick={handleLinkClick}>
+            Farmer Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="/retailer-dashboard" onClick={handleLinkClick}>
+            Retailer Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="/customer-dashboard" onClick={handleLinkClick}>
+            Customer Dashboard
+          </a>
+        </li>
+      </>
+    );
+  }
+};
 
   return (
     <nav className="navbar-glass sticky-top">
@@ -30,72 +90,71 @@ function Navbar() {
 
         <div className={`mobile-menu ${menuOpen ? "show" : ""}`}>
           <ul>
-            {token &&
+            {token && (
               <li>
-              <a href="/home" onClick={handleLinkClick}>
-                Home
-              </a>
-            </li>
-            }
-            <li>
-              <a href="/farmer-dashboard" onClick={handleLinkClick}>
-                Farmer Dashboard
-              </a>
-            </li>
-            <li>
-              <a href="/customer-dashboard" onClick={handleLinkClick}>
-                Customer Dashboard
-              </a>
-            </li>
-            {!token &&
-                        <li>
-              <a href="/" onClick={handleLinkClick}>
-              Login
-              </a>
-            </li>
-            }
+                <a href="/home" onClick={handleLinkClick}>
+                  Home
+                </a>
+              </li>
+            )}
 
-            {!token && 
+            {/* Dynamic Dashboard Link */}
+            {token && renderDashboardLink()}
+
+            {!token && (
               <li>
-              <a href="/register" onClick={handleLinkClick}>
-                Register
-              </a>
-            </li>
-            }
+                <a href="/" onClick={handleLinkClick}>
+                  Login
+                </a>
+              </li>
+            )}
+
+            {!token && (
+              <li>
+                <a href="/register" onClick={handleLinkClick}>
+                  Register
+                </a>
+              </li>
+            )}
           </ul>
         </div>
 
         {/* Desktop Menu */}
         <ul className="desktop-menu">
-            {token &&
-              <li>
+          {token && (
+            <li>
               <a href="/home" onClick={handleLinkClick}>
                 Home
               </a>
             </li>
-            }
-          <li>
-            <a href="/farmer-dashboard">Farmer Dashboard</a>
-          </li>
-          <li>
-            <a href="/customer-dashboard">Customer Dashboard</a>
-          </li>
+          )}
 
-            {!token &&
-              <li>
-                <a href="/" onClick={handleLinkClick}>
-                  Login
+          {/* Dynamic Dashboard Link */}
+          {token && renderDashboardLink()}
+
+          {!token && (
+            <li>
+              <a href="/" onClick={handleLinkClick}>
+                Login
               </a>
             </li>
-            }
+          )}
 
-            {!token && 
-              <li>
+          {!token && (
+            <li>
               <a href="/register" onClick={handleLinkClick}>
                 Register
               </a>
             </li>
-            }
+          )}
+
+          {token && (
+            <li>
+              <a href="#" onClick={logout}>
+                Logout
+              </a>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

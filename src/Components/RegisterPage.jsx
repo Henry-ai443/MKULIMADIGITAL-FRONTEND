@@ -63,8 +63,9 @@ const RegisterPage = () => {
 
       if (contentType && contentType.includes('application/json')) {
         const data = await response.json();
-        if (data.token) {
+        if (data.token && data.role) {
           localStorage.setItem('token', data.token);
+          localStorage.setItem('role', data.user.role);
           navigate('/');
         } else {
           setError('Unexpected server response.');

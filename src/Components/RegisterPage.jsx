@@ -63,6 +63,7 @@ const RegisterPage = () => {
 
       if (contentType && contentType.includes('application/json')) {
         const data = await response.json();
+        console.log(data)
         if (data.token && data.role) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('role', data.user.role);

@@ -65,7 +65,7 @@ const RegisterPage = () => {
         const data = await response.json();
         if (data.token) {
           localStorage.setItem('token', data.token);
-          navigate('/dashboard');
+          navigate('/');
         } else {
           setError('Unexpected server response.');
         }

@@ -19,6 +19,8 @@ function Navbar() {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
 
+  console.log(role)
+
   // Function to render the dashboard link based on role
 // Inside Navbar component
 

@@ -19,7 +19,7 @@ const LoginPage = () => {
     setError('');
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/auth/login/", {
+      const res = await fetch("https://mkulimadigital-backend.onrender.com/api/login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -33,7 +33,7 @@ const LoginPage = () => {
 
       const data = await res.json();
       localStorage.setItem("token", data.token);
-      navigate("/dashboard");
+      navigate("/home");
     } catch (err) {
       console.error(err);
       setError("An error occurred. Please try again.");

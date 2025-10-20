@@ -10,10 +10,10 @@ function App() {
   return (
     <Router>
       <Routes>
-      <Route path='/' element={<Home/>}></Route>
+      <Route path='/home' element={<Home/>}></Route>
       <Route path='/farmer-dashboard' element = {<FarmerDashboard/>}></Route>
       <Route path='/customer-dashboard'  element = {<CustomerDashboard/>}></Route>
-      <Route path='/login' element={<LoginPage/>}></Route>
+      <Route path='/' element={<LoginPage/>}></Route>
       <Route path='/register' element={<RegisterPage/>}></Route>
       </Routes>
     </Router>

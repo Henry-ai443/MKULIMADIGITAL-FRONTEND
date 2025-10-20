@@ -8,6 +8,9 @@ function Navbar() {
 
   const handleLinkClick = () => setMenuOpen(false);
 
+  //TOKEN and ROLE MIDDLEWARE
+  const token = localStorage.getItem("token");
+
   return (
     <nav className="navbar-glass sticky-top">
       <div className="container">
@@ -27,11 +30,13 @@ function Navbar() {
 
         <div className={`mobile-menu ${menuOpen ? "show" : ""}`}>
           <ul>
-            <li>
-              <a href="/" onClick={handleLinkClick}>
+            {token &&
+              <li>
+              <a href="/home" onClick={handleLinkClick}>
                 Home
               </a>
             </li>
+            }
             <li>
               <a href="/farmer-dashboard" onClick={handleLinkClick}>
                 Farmer Dashboard
@@ -42,36 +47,55 @@ function Navbar() {
                 Customer Dashboard
               </a>
             </li>
-            <li>
-              <a href="/login" onClick={handleLinkClick}>
-                Login
+            {!token &&
+                        <li>
+              <a href="/" onClick={handleLinkClick}>
+              Login
               </a>
             </li>
-            <li>
+            }
+
+            {!token && 
+              <li>
               <a href="/register" onClick={handleLinkClick}>
                 Register
               </a>
             </li>
+            }
           </ul>
         </div>
 
         {/* Desktop Menu */}
         <ul className="desktop-menu">
-          <li>
-            <a href="/">Home</a>
-          </li>
+            {token &&
+              <li>
+              <a href="/home" onClick={handleLinkClick}>
+                Home
+              </a>
+            </li>
+            }
           <li>
             <a href="/farmer-dashboard">Farmer Dashboard</a>
           </li>
           <li>
             <a href="/customer-dashboard">Customer Dashboard</a>
           </li>
-          <li>
-            <a href="/login">Login</a>
-          </li>
-          <li>
-            <a href="/register">Register</a>
-          </li>
+
+            {!token &&
+              <li>
+                <a href="/" onClick={handleLinkClick}>
+                  Login
+              </a>
+            </li>
+            }
+
+            {!token && 
+              <li>
+              <a href="/register" onClick={handleLinkClick}>
+                Register
+              </a>
+            </li>
+            }
         </ul>
       </div>
     </nav>

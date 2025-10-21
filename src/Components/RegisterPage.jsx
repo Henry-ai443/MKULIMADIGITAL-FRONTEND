@@ -65,10 +65,10 @@ const RegisterPage = () => {
         const data = await response.json();
         console.log(data)
         console.log(data.user.role)
-        if (data.token && data.role) {
+        if (data.token && data.user.role) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('role', data.user.role);
-
+          navigate('home');
         } else {
           setError('Unexpected server response.');
         }

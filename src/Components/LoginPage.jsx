@@ -92,6 +92,7 @@ const LoginPage = () => {
           >
             {loading ? (
               <div className="spinner"></div>
+              
             ) : (
               "Login"
             )}

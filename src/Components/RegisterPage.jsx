@@ -61,7 +61,7 @@ const RegisterPage = () => {
         return;
       }
 
-      if (contentType && contentType.includes('application/json')) {
+      if (response.ok) {
         const data = await response.json();
         console.log(data)
         console.log(data.user.role)

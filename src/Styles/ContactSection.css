@@ -1,0 +1,17 @@
+.contact-section {
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+}
+
+.contact-section .btn-primary {
+  background-color: #007bff;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.contact-section .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.alert {
+  font-weight: 500;
+}

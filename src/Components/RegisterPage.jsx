@@ -68,6 +68,7 @@ const RegisterPage = () => {
         if (data.token && data.user.role) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('role', data.user.role);
+          localStorage.setItem('username', data.user.username);
           navigate('/');
         } else {
           setError('Unexpected server response.');

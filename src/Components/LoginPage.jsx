@@ -38,6 +38,8 @@ const LoginPage = () => {
       const data = await res.json();
       console.log(data);
       localStorage.setItem("token", data.token);
+      localStorage.setItem("role", data.user_details.role);
+      localStorage.setItem("email", data.user_details.email)
       setSuccess(true);
       setLoading(false);
 
